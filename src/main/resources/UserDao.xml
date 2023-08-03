@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.link.dao.UserDao">
+<!--    <select id="selectBlog" resultType="Blog">
+        select * from Blog where id = #{id}
+    </select>
+-->
+    <insert id="insert" parameterType="com.link.pojo.User">
+        insert into newuser values(#{id},#{username},#{password});
+    </insert>
+    <delete id="drop" parameterType="com.link.pojo.User">
+        delete from newuser where username = #{username};
+    </delete>   <!--不能用动态sql，因为直接点删除会全表删除。-->
+    <update id="update"  parameterType="com.link.pojo.User">
+        update newuser set password = #{password} where username = #{username};
+    </update>
+    <select id="select" resultType="com.link.pojo.User">
+        select * from newuser;
+    </select>
+</mapper>
